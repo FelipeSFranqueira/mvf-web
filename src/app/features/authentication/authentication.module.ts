@@ -7,12 +7,13 @@ import { MvfIconComponent } from 'modules/shared/mvf-ui';
 import { RegistrationComponent } from './containers/registration/registration.component';
 import { RegistrationTypeComponent } from './components/registration-type/registration-type.component';
 import { ProfessionalRegistrationComponent } from './containers/professional-registration/professional-registration';
-import { RegistrationUserInfoComponent } from './components/registration-user-info/registration-user-info.component';
-import { RegistrationUserDocumentsComponent } from './components/registration-user-documents/registration-user-documents';
+import { RegistrationProfessionalInfoComponent } from './components/registration-professional-info/registration-professional-info.component';
+import { RegistrationProfessionalDocumentsComponent } from './components/registration-professional-documents/registration-professional-documents';
 import { ProfessionalRegistrationState } from './state/professional-registration.state';
 import { ProfessionalRegistrationFacade } from './professional-registration.facade';
-import { RegistrationUserBusinessComponent } from './components/registration-user-business/registration-user-business.component';
+import { RegistrationProfessionalBusinessComponent } from './components/registration-professional-business/registration-professional-business.component';
 import { RegistrationProfessionalReviewComponent } from './components/registration-professional-review/registration-professional-review';
+import { RegistrationAccountComponent } from './components/registration-account/registration-account.component';
 
 @NgModule({
   imports: [
@@ -26,10 +27,11 @@ import { RegistrationProfessionalReviewComponent } from './components/registrati
     RegistrationComponent,
     RegistrationTypeComponent,
     ProfessionalRegistrationComponent,
-    RegistrationUserInfoComponent,
-    RegistrationUserDocumentsComponent,
-    RegistrationUserBusinessComponent,
+    RegistrationProfessionalInfoComponent,
+    RegistrationProfessionalDocumentsComponent,
+    RegistrationProfessionalBusinessComponent,
     RegistrationProfessionalReviewComponent,
+    RegistrationAccountComponent,
   ],
 })
 export class AuthenticationModule {}
