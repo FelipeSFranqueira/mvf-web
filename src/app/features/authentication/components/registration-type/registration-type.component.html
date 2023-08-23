@@ -1,21 +1,19 @@
 <section>
   <div
-    class="d-flex align-items-center justify-content-center py-5 min-h-screen"
-    style="background-color: hsl(0, 0%, 96%)"
+    class="d-flex align-items-center justify-content-center py-5 min-h-screen bg-white-smoke"
   >
     <div class="container text-center text-white">
       <div class="row mb-5 text-black">
-        <h1 class="display-4 fw-bold">
-          Selecione a sua função dentro do aplicativo
-        </h1>
+        <h1 class="display-4 fw-bold">Selecione a sua função no aplicativo</h1>
         <p class="text-offset mt-3">
-          Aqui na Me Vê Um Frete você pode contratar ou vender serviços de frete
+          Aqui na Me Vê Um Frete você pode contratar ou vender serviços de
+          frete, desde pequenos itens, até contratação de caminhões.
         </p>
       </div>
 
       <div class="row g-3">
         <div class="col-md-6" role="button" routerLink="professional">
-          <div class="shadow-sm rounded p-4 bg-primary">
+          <div class="shadow-sm rounded p-4 bg-primary h-100 card-hover">
             <lib-mvf-icon [icon]="providerIcon" [classes]="'w-96 h-96 mb-3'" />
             <div class="card-body">
               <h5 class="card-title">
@@ -26,7 +24,10 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="shadow-sm rounded p-4 bg-primary" role="button">
+          <div
+            class="shadow-sm rounded p-4 bg-primary h-100 card-hover"
+            role="button"
+          >
             <lib-mvf-icon [icon]="userIcon" [classes]="'w-96 h-96 mb-3'" />
             <div class="card-body">
               <h5 class="card-title">Sou cliente (Pessoa Física ou Empresa)</h5>
