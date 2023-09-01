@@ -22,11 +22,11 @@ $bg-colors: (
 
 @each $size, $value in $sizing {
   .w-#{$size} {
-    width: $value;
+    width: $value !important;
   }
 
   .h-#{$size} {
-    height: $value;
+    height: $value !important;
   }
 }
 
