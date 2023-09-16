@@ -17,13 +17,22 @@ export class RegistrationComponent implements OnInit {
   hasError$?: Observable<boolean>;
 
   registrationForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    login: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
+    firstName: new FormControl('', {
+      validators: Validators.required,
+      nonNullable: true,
+    }),
+    lastName: new FormControl('', {
+      validators: Validators.required,
+      nonNullable: true,
+    }),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+      nonNullable: true,
+    }),
+    password: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(8)],
+      nonNullable: true,
+    }),
   });
 
   constructor(
@@ -53,6 +62,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(): void {
-    this.facade.register(this.registrationForm.value as User);
+    const newUser: User = {
+      firstName: this.registrationForm.controls.firstName.value,
+      lastName: this.registrationForm.controls.lastName.value,
+      email: this.registrationForm.controls.email.value,
+      password: this.registrationForm.controls.password.value,
+    };
+    this.facade.register(newUser);
   }
 }

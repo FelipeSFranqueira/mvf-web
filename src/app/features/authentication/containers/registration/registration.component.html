@@ -68,7 +68,7 @@
                 <div class="col mb-3">
                   <label class="form-label" for="email">Email</label>
                   <input
-                    formControlName="login"
+                    formControlName="email"
                     type="email"
                     class="form-control"
                     id="email"
@@ -76,8 +76,8 @@
                   />
                   <lib-mvf-control-error
                     *ngIf="
-                      registrationForm.controls.login.invalid &&
-                      registrationForm.controls.login.touched
+                      registrationForm.controls.email.invalid &&
+                      registrationForm.controls.email.touched
                     "
                     message="Digite um email válido"
                   />

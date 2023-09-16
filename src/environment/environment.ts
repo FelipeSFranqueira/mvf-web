@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
   env: 'DEV',
-  baseApi: 'http://localhost:8080',
+  baseApi: 'https://x8ki-letl-twmt.n7.xano.io/api:-udDtsIO',
 };

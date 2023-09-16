@@ -6,12 +6,11 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
-  private baseApi = `${environment.baseApi}/api/v1/auth`;
+  private baseApi = `${environment.baseApi}/auth`;
 
   constructor(private http: HttpClient) {}
 
   register(user: User): Observable<HttpResponse<any>> {
-    console.log('post');
-    return this.http.post<HttpResponse<any>>(`${this.baseApi}/register`, user);
+    return this.http.post<HttpResponse<any>>(`${this.baseApi}/signup`, user);
   }
 }
