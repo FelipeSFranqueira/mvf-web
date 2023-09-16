@@ -1,0 +1,53 @@
+<form>
+  <h3>Documentos</h3>
+  <p class="text-offset small">
+    Os seus documentos são essencias para validarmos se você é quem diz ser.
+    Isso garante a sua segurança e a segurança dos seus clientes.
+  </p>
+
+  <p>
+    De início, precisamos que você envie uma foto de algum dos seus documentos
+    (RG ou CNH) frente e verso (aberto e fora do plástico de proteção), como no
+    exemplo a seguir:
+  </p>
+
+  <div class="row mb-3">
+    <div class="container col-md-4 mb-md-0 mb-3">
+      <img src="assets/document_example.jpg" class="w-100" />
+    </div>
+    <div class="container col">
+      <div class="form-label">
+        <label for="document-upload">Foto do seu documento (RG ou CNH)</label>
+        <span class="d-block text-offset small"
+          >Esse dado é sigiloso e será usado apenas para validar a sua
+          identidade, não se preocupe pois a imagem não será pública e será
+          excluída após validação.</span
+        >
+      </div>
+      <input type="file" id="document-upload" class="form-control" />
+    </div>
+  </div>
+
+  <hr />
+
+  <p>
+    Agora precisamos de uma foto sua segurando o documento que foi enviado
+    acima. Novamente, siga o exemplo a seguir:
+  </p>
+  <div class="row mb-3">
+    <div class="container col-md-4 mb-md-0 mb-3">
+      <img src="assets/selfie_document_example.jpg" class="w-100" />
+    </div>
+    <div class="container col">
+      <div class="form-label">
+        <label for="selfie-upload">Selfie segurando o documento</label>
+        <span class="d-block text-offset small"
+          >Esse dado é sigiloso e será usado apenas para validar a sua
+          identidade, não se preocupe pois a imagem não será pública e será
+          excluída após validação.</span
+        >
+      </div>
+      <input type="file" id="selfie-upload" class="form-control" />
+    </div>
+  </div>
+</form>

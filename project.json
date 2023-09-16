@@ -7,20 +7,32 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "customWebpackConfig": {
+          "path": "./webpack.config.js"
+        },
         "outputPath": "dist/mvf-web",
         "index": "./src/index.html",
         "main": "./src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "./tsconfig.app.json",
         "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.scss"],
+        "styles": [
+          "node_modules/bootstrap/scss/bootstrap.scss",
+          "./src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "src/environment/environment.ts",
+              "with": "src/environment/environment.prod.ts"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",
@@ -35,6 +47,20 @@
           ],
           "outputHashing": "all"
         },
+        "qa": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "src/environment/environment.ts",
+              "with": "src/environment/environment.qa.ts"
+            }
+          ]
+        },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
@@ -47,10 +73,13 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "mvf-web:build:production"
+        },
+        "qa": {
+          "browserTarget": "mvf-web:build:qa"
         },
         "development": {
           "browserTarget": "mvf-web:build:development"
@@ -75,7 +104,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "options": {
-        "jestConfig": "jest.config.ts",
+        "jestConfig": "jest.config.app.ts",
         "passWithNoTests": true
       },
       "configurations": {

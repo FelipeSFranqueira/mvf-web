@@ -1,0 +1,129 @@
+<section
+  class="min-vh-100 d-flex align-items-center text-center text-lg-start bg-white-smoke py-4"
+>
+  <div class="container">
+    <div class="row text-center">
+      <h1 class="fw-bold mb-3">
+        Crie sua conta aqui, seja você um
+        <span class="text-primary">cliente ou prestador de serviço</span>
+      </h1>
+    </div>
+
+    <div class="row my-4">
+      <div class="container d-flex justify-content-center align-items-center">
+        <div class="col-lg-7 col-12 text-start bg-white rounded shadow-sm">
+          <div class="card-body p-4">
+            <div *ngIf="success$ | async" class="w-100 text-center mb-3">
+              <p class="text-success">Ótimo! Sua conta foi criada.</p>
+              <p>
+                Em instantes você receberá um link de confirmação para confirmar
+                a sua conta na sua caixa de email.
+              </p>
+            </div>
+
+            <div *ngIf="(success$ | async) === false">
+              <h2>Registre-se</h2>
+              <p>
+                Crie sua conta e comece a organizar sua mudança ou promover seus
+                serviços de frete!
+              </p>
+
+              <form class="my-4" [formGroup]="registrationForm">
+                <div class="row">
+                  <div class="col-md-4 col-12 mb-3">
+                    <label class="form-label" for="first-name">Nome</label>
+                    <input
+                      formControlName="firstName"
+                      type="text"
+                      class="form-control"
+                      id="first-name"
+                      placeholder="Digite seu nome"
+                    />
+                    <lib-mvf-control-error
+                      *ngIf="
+                        registrationForm.controls.firstName.invalid &&
+                        registrationForm.controls.firstName.touched
+                      "
+                      message="O nome não pode ser vazio"
+                    />
+                  </div>
+                  <div class="col mb-3">
+                    <label class="form-label" for="last-name">Sobrenome</label>
+                    <input
+                      formControlName="lastName"
+                      type="text"
+                      class="form-control"
+                      id="last-name"
+                      placeholder="Digite seu sobrenome"
+                    />
+                    <lib-mvf-control-error
+                      *ngIf="
+                        registrationForm.controls.lastName.invalid &&
+                        registrationForm.controls.lastName.touched
+                      "
+                      message="O sobrenome não pode ser vazio"
+                    />
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <label class="form-label" for="email">Email</label>
+                  <input
+                    formControlName="email"
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="exemplo@email.com"
+                  />
+                  <lib-mvf-control-error
+                    *ngIf="
+                      registrationForm.controls.email.invalid &&
+                      registrationForm.controls.email.touched
+                    "
+                    message="Digite um email válido"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <label class="form-label" for="password">Senha</label>
+                    <input
+                      formControlName="password"
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      placeholder="••••••••"
+                    />
+                    <lib-mvf-control-error
+                      *ngIf="
+                        registrationForm.controls.password.invalid &&
+                        registrationForm.controls.password.touched
+                      "
+                      message="Sua senha deve ter no mínimo 8 caracteres"
+                    />
+                  </div>
+                </div>
+
+                <div class="w-100 mt-2 text-center">
+                  <button
+                    class="btn btn-primary btn-lg w-100"
+                    *ngIf="(isRegistering$ | async) === false"
+                    (click)="register()"
+                    [disabled]="registrationForm.invalid"
+                  >
+                    Criar conta
+                  </button>
+                  <lib-mvf-loader *ngIf="isRegistering$ | async" />
+                </div>
+              </form>
+            </div>
+            <div class="row text-center g-0">
+              <span> Já tem uma conta? </span>
+              <a routerLink="/auth/login" class="link pointer"
+                >Voltar para Login</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
