@@ -15,6 +15,7 @@ import { RegistrationComponent } from './containers/registration/registration.co
 import { AuthenticationFacade } from './authentication.facade';
 import { AuthenticationService } from './api/authentication.service';
 import { AuthenticationState } from './state/authentication.state';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   imports: [
@@ -27,7 +28,12 @@ import { AuthenticationState } from './state/authentication.state';
     MvfLoaderComponent,
   ],
   declarations: [LoginComponent, RegistrationComponent],
-  providers: [AuthenticationFacade, AuthenticationService, AuthenticationState],
+  providers: [
+    AuthenticationFacade,
+    AuthenticationService,
+    AuthenticationState,
+    CookieService,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthenticationModule {}
