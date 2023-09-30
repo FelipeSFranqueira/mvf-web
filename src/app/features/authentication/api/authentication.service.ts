@@ -22,10 +22,6 @@ export class AuthenticationService {
   }
 
   populateUser(): Observable<User> {
-    const headers = {
-      Authorization: `Bearer ${this.cookieService.get('jwt').trim()}`,
-    };
-
-    return this.http.get<User>(`${this.baseApi}/me`, { headers });
+    return this.http.get<User>(`${this.baseApi}/me`);
   }
 }
