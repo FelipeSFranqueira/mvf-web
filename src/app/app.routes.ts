@@ -8,4 +8,11 @@ export const appRoutes: Route[] = [
         (m) => m.AuthenticationModule
       ),
   },
+  {
+    path: 'account-completion',
+    loadChildren: () =>
+      import('./features/account-completion/account-completion.module').then(
+        (m) => m.AccountCompletionModule
+      ),
+  },
 ];

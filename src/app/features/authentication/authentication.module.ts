@@ -16,6 +16,7 @@ import { AuthenticationFacade } from './authentication.facade';
 import { AuthenticationService } from './api/authentication.service';
 import { AuthenticationState } from './state/authentication.state';
 import { CookieService } from 'ngx-cookie-service';
+import { UserState } from '../global/state/user.state';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { CookieService } from 'ngx-cookie-service';
     AuthenticationService,
     AuthenticationState,
     CookieService,
+    UserState,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
