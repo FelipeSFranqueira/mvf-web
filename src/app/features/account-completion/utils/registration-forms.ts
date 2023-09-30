@@ -1,51 +1,25 @@
-import {
-  UntypedFormArray,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-const userData = new UntypedFormGroup({
-  firstName: new UntypedFormControl('', Validators.required),
-  lastName: new UntypedFormControl('', Validators.required),
-  birthdate: new UntypedFormControl('', Validators.required),
-  cpf: new UntypedFormControl('', [
+const userData = new FormGroup({
+  birthdate: new FormControl('', Validators.required),
+  cpf: new FormControl('', [
     Validators.required,
     Validators.minLength(14),
     Validators.maxLength(14),
   ]),
-  phoneNumber: new UntypedFormControl('', Validators.required),
-  email: new UntypedFormControl('', [Validators.required, Validators.email]),
-  password: new UntypedFormControl('', [
-    Validators.required,
-    Validators.minLength(8),
-  ]),
-  representsCompany: new UntypedFormControl(false),
+  phoneNumber: new FormControl('', Validators.required),
 });
 
-export const userForm = new UntypedFormGroup({
+export const professionalForm = new FormGroup({
   userData,
-  companyData: new UntypedFormGroup({
-    legalName: new UntypedFormControl('', Validators.required),
-    cnpj: new UntypedFormControl('', Validators.required),
-    size: new UntypedFormControl('', Validators.required),
-  }),
+  cnh: new FormControl('', Validators.required),
+  hasCnpj: new FormControl(false, Validators.required),
+  cnpj: new FormControl(''),
+  legalName: new FormControl(''),
 });
 
-export const professionalForm = new UntypedFormControl({
-  userData,
-  businessData: new UntypedFormGroup({
-    individual: new UntypedFormGroup({
-      vehicleType: new UntypedFormControl('', Validators.required), // remember to limit options if the professional is not a company
-      vehiclePlate: new UntypedFormControl('', Validators.required),
-    }),
-    company: new UntypedFormGroup({
-      companyData: new UntypedFormGroup({
-        legalName: new UntypedFormControl('', Validators.required),
-        cnpj: new UntypedFormControl('', Validators.required),
-        size: new UntypedFormControl('', Validators.required),
-        vehicles: new UntypedFormArray([]),
-      }),
-    }),
-  }),
+export const vehicleForm = new FormGroup({
+  vehicleType: new FormControl('', Validators.required),
+  vehiclePlate: new FormControl('', Validators.required),
+  vehicleDocument: new FormControl('', Validators.required),
 });
