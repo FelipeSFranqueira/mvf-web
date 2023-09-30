@@ -4,38 +4,47 @@ import { AuthenticationState } from './state/authentication.state';
 import { User } from '../../shared/models/user';
 import { LoginRequest } from './models/login-request.model';
 import { CookieService } from 'ngx-cookie-service';
+import { UserState } from '../global/state/user.state';
 
 @Injectable()
 export class AuthenticationFacade {
   constructor(
     private authenticationService: AuthenticationService,
-    private state: AuthenticationState,
+    private authState: AuthenticationState,
+    private userState: UserState,
     private cookieService: CookieService
   ) {}
 
-  isRegistering$ = this.state.isRegistering$;
-  isRegistered$ = this.state.isRegistered$;
-  error$ = this.state.error$;
-  loginLoading$ = this.state.loginLoading$;
-  loginSuccess$ = this.state.loginSuccess$;
-  loginError$ = this.state.loginError$;
+  isRegistering$ = this.authState.isRegistering$;
+  isRegistered$ = this.authState.isRegistered$;
+  error$ = this.authState.error$;
+  loginLoading$ = this.authState.loginLoading$;
+  loginSuccess$ = this.authState.loginSuccess$;
+  loginError$ = this.authState.loginError$;
 
   register(user: User): void {
-    this.state.register();
+    this.authState.register();
     this.authenticationService.register(user).subscribe({
-      next: () => this.state.finishRegister(),
-      error: () => this.state.dispatchError(),
+      next: () => this.authState.finishRegister(),
+      error: () => this.authState.dispatchError(),
     });
   }
 
   login(loginRequest: LoginRequest): void {
-    this.state.login();
+    this.authState.login();
     this.authenticationService.login(loginRequest).subscribe({
       next: (loginResponse) => {
-        this.state.finishLogin();
         this.setTokenCookie(loginResponse.authToken);
+
+        this.authenticationService.populateUser().subscribe({
+          next: (user) => {
+            this.userState.setUser(user);
+            this.authState.finishLogin();
+          },
+          error: () => this.authState.dispatchLoginError(),
+        });
       },
-      error: () => this.state.dispatchLoginError(),
+      error: () => this.authState.dispatchLoginError(),
     });
   }
 
