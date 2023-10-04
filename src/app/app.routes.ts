@@ -15,4 +15,11 @@ export const appRoutes: Route[] = [
         (m) => m.AccountCompletionModule
       ),
   },
+  {
+    path: 'find-professionals',
+    loadChildren: () =>
+      import('./features/customer-workspace/customer-workspace.module').then(
+        (m) => m.CustomerWorkspaceModule
+      ),
+  },
 ];
