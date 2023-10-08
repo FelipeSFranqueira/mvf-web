@@ -1,0 +1,43 @@
+<div class="bg-white-smoke min-vh-100">
+  <div class="container">
+    <div class="row pt-4">
+      <h2>Seu Zé do caminhão</h2>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row gap-md-5 gap-3">
+      <div class="col-lg-8" style="height: 400px">
+        <div class="w-100 h-100 bg-secondary"></div>
+      </div>
+
+      <div class="col">
+        <div class="w-100 h-100 p-3 bg-white shadow-sm rounded">
+          <div class="container">
+            <div
+              class="row bg-primary text-white text-center rounded-1 shadow-sm p-2"
+            >
+              <h4>{{ 1500 | currency : 'BRL' }}</h4>
+            </div>
+          </div>
+
+          <div class="container mt-3">
+            <div class="row">Registrado há X tempo</div>
+            <div class="row">Total de viagens: 0</div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <button
+                class="btn btn-primary shadow-sm"
+                (click)="requestService()"
+              >
+                Solicitar serviço
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

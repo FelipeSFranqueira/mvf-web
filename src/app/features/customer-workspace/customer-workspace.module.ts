@@ -10,6 +10,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { SearchResultsListComponent } from './containers/search-results-list/search-results-list.component';
 import { ProfessionalSearchBarComponent } from './components/professional-search-bar/professional-search-bar.component';
 import { ProfessionalCardComponent } from './components/professional-card/professional-card.component';
+import { ProfessionalDetailsComponent } from './containers/professional-details/professional-details.component';
+import { RequestModalComponent } from './components/request-modal/request-modal.component';
 
 @NgModule({
   imports: [
@@ -20,10 +22,12 @@ import { ProfessionalCardComponent } from './components/professional-card/profes
   ],
   declarations: [
     CustomerWorkspaceRootComponent,
-    ProfessionalSearchComponent,
     SearchResultsListComponent,
+    ProfessionalDetailsComponent,
+    ProfessionalSearchComponent,
     ProfessionalSearchBarComponent,
     ProfessionalCardComponent,
+    RequestModalComponent,
   ],
 })
 export class CustomerWorkspaceModule {}
