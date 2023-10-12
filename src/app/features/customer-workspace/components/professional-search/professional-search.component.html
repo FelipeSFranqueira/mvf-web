@@ -9,6 +9,11 @@
   </div>
   <div class="container" style="margin-top: -25px">
     <mvf-professional-search-bar />
-    <button class="btn btn-primary btn-lg col-12 mt-3 shadow-sm">Buscar</button>
+    <a
+      class="btn btn-primary btn-lg col-12 mt-3 shadow-sm"
+      [routerLink]="['results']"
+      [queryParams]="{ origin: '18170000', destiny: '18168000' }"
+      >Buscar</a
+    >
   </div>
 </div>

@@ -12,6 +12,7 @@ import { ProfessionalSearchBarComponent } from './components/professional-search
 import { ProfessionalCardComponent } from './components/professional-card/professional-card.component';
 import { ProfessionalDetailsComponent } from './containers/professional-details/professional-details.component';
 import { RequestModalComponent } from './components/request-modal/request-modal.component';
+import { UserRequestsComponent } from './containers/user-requests/user-requests.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { RequestModalComponent } from './components/request-modal/request-modal.
     ProfessionalSearchBarComponent,
     ProfessionalCardComponent,
     RequestModalComponent,
+    UserRequestsComponent,
   ],
 })
 export class CustomerWorkspaceModule {}
