@@ -46,6 +46,10 @@ $bg-colors: (
   min-height: 100vh;
 }
 
+.min-vh-50 {
+  min-height: 50vh;
+}
+
 .card-hover {
   transition: all;
   transition-duration: 200ms;

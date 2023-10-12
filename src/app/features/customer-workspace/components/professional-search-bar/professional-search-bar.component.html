@@ -1,0 +1,22 @@
+<div class="input-group input-group-lg">
+  <input
+    type="text"
+    class="form-control shadow-sm"
+    placeholder="CEP de origem"
+    [imask]="{ mask: '00000-000' }"
+  />
+  <input
+    type="text"
+    class="form-control shadow-sm"
+    placeholder="CEP de destino"
+    [imask]="{ mask: '00000-000' }"
+  />
+  <input
+    type="text"
+    class="form-control shadow-sm cursor-pointer"
+    placeholder="Data"
+    [imask]="{ mask: '00/00/0000' }"
+    [minDate]="minDate"
+    bsDatepicker
+  />
+</div>
