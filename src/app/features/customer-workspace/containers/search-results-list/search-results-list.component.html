@@ -6,5 +6,15 @@
 </div>
 
 <div class="cards-container">
-  <mvf-professional-card *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" />
+  <ng-container *ngIf="(searchResults$ | async)?.length; else no_data">
+    <mvf-professional-card
+      *ngFor="let professional of searchResults$ | async"
+    />
+  </ng-container>
+  <ng-template #no_data>
+    <lib-mvf-loader *ngIf="isSearchLoading$ | async" />
+    <h3 *ngIf="(isSearchLoading$ | async) === false">
+      Sem resultados para a sua busca.
+    </h3>
+  </ng-template>
 </div>
