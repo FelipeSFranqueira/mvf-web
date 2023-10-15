@@ -1,26 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-interface SearchForm {
-  origin: FormControl<string>;
-  destination: FormControl<string>;
-}
+import { SearchForm } from '../../models/search-form.model';
 
 @Component({
   selector: 'mvf-professional-search',
   templateUrl: './professional-search.component.html',
 })
 export class ProfessionalSearchComponent implements OnInit {
-  minDate?: Date;
   searchForm!: FormGroup<SearchForm>;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.minDate = new Date();
-    this.minDate.setDate(this.minDate.getDate() + 5);
-
     this.buildSearchForm();
   }
 
