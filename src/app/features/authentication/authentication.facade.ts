@@ -6,6 +6,10 @@ import { LoginRequest } from './models/login-request.model';
 import { CookieService } from 'ngx-cookie-service';
 import { UserState } from '../global/state/user.state';
 
+/**
+ * Classe Facade que serve como interface entre os componentes
+ * e os serviços de estado e chamadas à API.
+ */
 @Injectable()
 export class AuthenticationFacade {
   constructor(
@@ -22,6 +26,11 @@ export class AuthenticationFacade {
   loginSuccess$ = this.authState.loginSuccess$;
   loginError$ = this.authState.loginError$;
 
+  /**
+   * Registra um usuário, chamando o service que se comunica com a API
+   * e alterando o estado.
+   * @param user
+   */
   register(user: User): void {
     this.authState.register();
     this.authenticationService.register(user).subscribe({
@@ -30,6 +39,12 @@ export class AuthenticationFacade {
     });
   }
 
+  /**
+   * Método responsável por logar o usuário.
+   * Chama o service que se comunica com a API e manipula adequadamente
+   * o estado da aplicação.
+   * @param loginRequest
+   */
   login(loginRequest: LoginRequest): void {
     this.authState.login();
     this.authenticationService.login(loginRequest).subscribe({
@@ -48,6 +63,11 @@ export class AuthenticationFacade {
     });
   }
 
+  /**
+   * Armazena o token JWT (token de autenticação) em um cookie no navegador
+   * do usuário.
+   * @param token
+   */
   private setTokenCookie(token: string): void {
     this.cookieService.set('jwt', token);
   }

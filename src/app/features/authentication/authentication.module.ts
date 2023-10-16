@@ -18,6 +18,9 @@ import { AuthenticationState } from './state/authentication.state';
 import { CookieService } from 'ngx-cookie-service';
 import { UserState } from '../global/state/user.state';
 
+/**
+ * Módulo da funcionalidade de Autenticação.
+ */
 @NgModule({
   imports: [
     CommonModule,

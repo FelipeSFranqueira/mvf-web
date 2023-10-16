@@ -8,6 +8,11 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
+/**
+ * Componente genérico de biblioteca própria para renderizar ícones
+ * na aplicação de maneira otimizada.
+ * @implements {OnChanges}
+ */
 @Component({
   selector: 'lib-mvf-icon',
   standalone: true,
@@ -15,7 +20,14 @@ import {
   templateUrl: './mvf-icon.component.html',
 })
 export class MvfIconComponent implements OnChanges {
+  /**
+   * Input que recebe pelo componente pai o ícone a ser renderizado.
+   * @see {icons.model.ts}
+   */
   @Input() icon?: string;
+  /**
+   * Input que recebe classes css a serem aplicadas no ícone.
+   */
   @Input() classes?: string;
 
   private el: Element;
@@ -24,6 +36,10 @@ export class MvfIconComponent implements OnChanges {
     this.el = elRef.nativeElement as Element;
   }
 
+  /**
+   * Quando o input de icon muda, o método roda e renderiza o ícone.
+   * @param changes
+   */
   ngOnChanges(changes: SimpleChanges): void {
     const iconName = changes['icon'];
 

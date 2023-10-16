@@ -5,6 +5,9 @@ export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
 }
 
+/**
+ * Componente de dialog (modal) de solicitação de serviço.
+ */
 @Component({
   selector: 'mvf-request-modal',
   templateUrl: './request-modal.component.html',

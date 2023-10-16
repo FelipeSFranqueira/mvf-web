@@ -7,6 +7,10 @@ import {
   FoundProfessionalsResponse,
 } from '../models/found-professional.model';
 
+/**
+ * Classe facade que disponibiliza interface de comunicação entre estado
+ * e service de comunicação com a API.
+ */
 @Injectable()
 export class FindProfessionalsFacade {
   isSearchLoading$?: Observable<boolean>;
@@ -24,6 +28,12 @@ export class FindProfessionalsFacade {
     this.searchResults$ = findProfessionalsState.searchResults$;
   }
 
+  /**
+   * Método responsável por chamar a atualização de estado
+   * e chamadas à API na busca por profissionais.
+   * @param origin
+   * @param destination
+   */
   findProfessionals(origin: string, destination: string): void {
     this.findProfessionalsState.findProfessionals();
     this.findProfessionalsService

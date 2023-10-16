@@ -5,6 +5,9 @@ import { SearchResultsListComponent } from './containers/search-results-list/sea
 import { ProfessionalDetailsComponent } from './containers/professional-details/professional-details.component';
 import { UserRequestsComponent } from './containers/user-requests/user-requests.component';
 
+/**
+ * Rotas da funcionalidade de CustomerWorkspace.
+ */
 export const customerWorkspaceRoutes: Route[] = [
   {
     path: '',
