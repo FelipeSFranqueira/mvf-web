@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+ * Componente de container da funcionalidade de Registration.
+ */
 @UntilDestroy()
 @Component({
   selector: 'mvf-registration',
@@ -16,6 +19,10 @@ export class RegistrationComponent implements OnInit {
   success$?: Observable<boolean>;
   hasError$?: Observable<boolean>;
 
+  /**
+   * Formulário de registro de usuário básico (sem role
+   * de cliente ou prestador).
+   */
   registrationForm = new FormGroup({
     firstName: new FormControl('', {
       validators: Validators.required,
@@ -40,6 +47,10 @@ export class RegistrationComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
+  /**
+   * Método que roda ao iniciar o componente e realiza as subscriptions
+   * necessárias para seu funcionamento.
+   */
   ngOnInit(): void {
     this.isRegistering$ = this.facade.isRegistering$;
     this.success$ = this.facade.isRegistered$;
@@ -61,6 +72,10 @@ export class RegistrationComponent implements OnInit {
       );
   }
 
+  /**
+   * Método que registra o novo usuário a partir da interface fornecida
+   * pelo facade.
+   */
   register(): void {
     const newUser: User = {
       firstName: this.registrationForm.controls.firstName.value,

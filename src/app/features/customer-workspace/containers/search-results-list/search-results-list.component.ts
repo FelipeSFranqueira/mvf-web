@@ -10,6 +10,10 @@ import { Observable } from 'rxjs';
 import { FoundProfessional } from '../../models/found-professional.model';
 import { SearchForm } from '../../models/search-form.model';
 
+/**
+ * Componente de container da lista de resultados da
+ * busca por profissionais.
+ */
 @UntilDestroy()
 @Component({
   selector: 'mvf-search-results-list',
@@ -31,6 +35,10 @@ export class SearchResultsListComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
+  /**
+   * Realiza as subscriptions necessárias para o funcionamento do sistema
+   * quando o componente se inicia.
+   */
   ngOnInit(): void {
     this.buildSearchForm();
 
@@ -59,6 +67,10 @@ export class SearchResultsListComponent implements OnInit {
       );
   }
 
+  /**
+   * Método que se comunica com o facade buscando profissionais e enviando
+   * parâmetros da busca para o facade.
+   */
   findProfessionals() {
     this.findProfessionalsFacade.findProfessionals(
       this.searchForm.controls['origin'].value.replace(/-/g, ''),
@@ -66,6 +78,9 @@ export class SearchResultsListComponent implements OnInit {
     );
   }
 
+  /**
+   * Constrói o formulário reativo de busca.
+   */
   private buildSearchForm(): void {
     this.searchForm = new FormGroup<SearchForm>({
       origin: new FormControl('', {

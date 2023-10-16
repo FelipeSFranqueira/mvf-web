@@ -14,6 +14,11 @@ import { appRoutes } from './app.routes';
 import { HeaderInterceptor } from './shared/http/interceptor.service';
 registerLocaleData(ptBr);
 
+/**
+ * Módulo raíz do projeto.
+ * Importa, provê e declara componentes e services que são utilizados
+ * na aplicação.
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [
