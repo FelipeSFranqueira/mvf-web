@@ -19,6 +19,9 @@ import { FindProfessionalsFacade } from './facade/find-professionals.facade';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MvfLoaderComponent } from 'modules/shared/mvf-ui';
+import { FindSpecificProfessionalService } from './api/find-specific-professional.service';
+import { FindSpecificProfessionalState } from './state/find-specific-professional.state';
+import { FindSpecificProfessionalFacade } from './facade/find-specific-professional.facade';
 
 /**
  * Módulo da funconalidade de CustomerWorkspace.
@@ -47,6 +50,9 @@ import { MvfLoaderComponent } from 'modules/shared/mvf-ui';
     FindProfessionalsService,
     FindProfessionalsFacade,
     FindProfessionalsState,
+    FindSpecificProfessionalService,
+    FindSpecificProfessionalState,
+    FindSpecificProfessionalFacade,
   ],
 })
 export class CustomerWorkspaceModule {}
