@@ -63,6 +63,16 @@ export class AuthenticationFacade {
     });
   }
 
+  populateUserFromJwt(): void {
+    this.authenticationService.populateUser().subscribe({
+      next: (user) => {
+        this.userState.setUser(user);
+        this.authState.finishLogin();
+      },
+      error: () => this.authState.dispatchLoginError(),
+    });
+  }
+
   /**
    * Armazena o token JWT (token de autenticação) em um cookie no navegador
    * do usuário.

@@ -19,6 +19,14 @@ import { FindProfessionalsFacade } from './facade/find-professionals.facade';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MvfLoaderComponent } from 'modules/shared/mvf-ui';
+import { FindSpecificProfessionalService } from './api/find-specific-professional.service';
+import { FindSpecificProfessionalState } from './state/find-specific-professional.state';
+import { FindSpecificProfessionalFacade } from './facade/find-specific-professional.facade';
+import { RequestsService } from './api/requests.service';
+import { RequestsState } from './state/requests.state';
+import { RequestsFacade } from './facade/requests.facade';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { UserState } from '../global/state/user.state';
 
 /**
  * Módulo da funconalidade de CustomerWorkspace.
@@ -32,6 +40,7 @@ import { MvfLoaderComponent } from 'modules/shared/mvf-ui';
     HttpClientModule,
     ReactiveFormsModule,
     MvfLoaderComponent,
+    TimepickerModule.forRoot(),
   ],
   declarations: [
     CustomerWorkspaceRootComponent,
@@ -45,8 +54,14 @@ import { MvfLoaderComponent } from 'modules/shared/mvf-ui';
   ],
   providers: [
     FindProfessionalsService,
-    FindProfessionalsFacade,
     FindProfessionalsState,
+    FindProfessionalsFacade,
+    FindSpecificProfessionalService,
+    FindSpecificProfessionalState,
+    FindSpecificProfessionalFacade,
+    RequestsService,
+    RequestsState,
+    RequestsFacade,
   ],
 })
 export class CustomerWorkspaceModule {}
