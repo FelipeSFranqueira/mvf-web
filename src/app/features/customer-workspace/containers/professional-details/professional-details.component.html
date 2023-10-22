@@ -1,9 +1,9 @@
 <div class="bg-white-smoke min-vh-100">
   <lib-mvf-loader *ngIf="isSearchLoading$ | async" />
   <ng-container
-    *ngIf="(isSearchLoading$ | async) === false && !!(searchResults$ | async)"
+    *ngIf="(isSearchLoading$ | async) === false && !!(searchResult$ | async)"
   >
-    <ng-container *ngIf="searchResults$ | async as result">
+    <ng-container *ngIf="searchResult$ | async as result">
       <div class="container">
         <div class="row pt-4">
           <h2>{{ result.preferredName }}</h2>
@@ -37,7 +37,7 @@
                 <div class="row">
                   <button
                     class="btn btn-primary shadow-sm"
-                    (click)="requestService()"
+                    (click)="openRequestDialog()"
                   >
                     Solicitar serviço
                   </button>

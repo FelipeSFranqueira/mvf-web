@@ -1,3 +1,20 @@
-<h4>Solicitar Serviço</h4>
-<p>Lorem ipsum</p>
-<button class="btn btn-primary">Solicitar</button>
+<div class="bg-white p-3 rounded">
+  <h4>Solicitar Serviço</h4>
+  <p>Escolha a data e hora desejada para realização do serviço.</p>
+  <form [formGroup]="requestForm">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="dd/mm/aaaa"
+      formControlName="date"
+      [minDate]="minDate"
+      bsDatepicker
+    />
+    <timepicker
+      formControlName="time"
+      [showMeridian]="false"
+      [minuteStep]="15"
+    />
+  </form>
+  <button class="btn btn-primary" (click)="requestService()">Solicitar</button>
+</div>

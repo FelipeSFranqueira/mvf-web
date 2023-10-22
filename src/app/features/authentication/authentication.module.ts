@@ -12,11 +12,7 @@ import {
   MvfLoaderComponent,
 } from 'modules/shared/mvf-ui';
 import { RegistrationComponent } from './containers/registration/registration.component';
-import { AuthenticationFacade } from './authentication.facade';
-import { AuthenticationService } from './api/authentication.service';
-import { AuthenticationState } from './state/authentication.state';
 import { CookieService } from 'ngx-cookie-service';
-import { UserState } from '../global/state/user.state';
 
 /**
  * Módulo da funcionalidade de Autenticação.
@@ -32,13 +28,7 @@ import { UserState } from '../global/state/user.state';
     MvfLoaderComponent,
   ],
   declarations: [LoginComponent, RegistrationComponent],
-  providers: [
-    AuthenticationFacade,
-    AuthenticationService,
-    AuthenticationState,
-    CookieService,
-    UserState,
-  ],
+  providers: [CookieService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthenticationModule {}
