@@ -14,6 +14,11 @@ import { accountCompletionRoutes } from './account-completion.routes';
 import { AccountCompletionContainerComponent } from './containers/account-completion-container/account-completion-container.component';
 import { ProfessionalRegistrationFacade } from './professional-registration.facade';
 import { ProfessionalRegistrationState } from './state/professional-registration.state';
+import { CustomerRegistrationComponent } from './containers/customer-registration/customer-registration.component';
+import { IMaskModule } from 'angular-imask';
+import { CustomerRegistrationService } from './api/customer-registration.service';
+import { CustomerRegistrationState } from './state/customer-registration.state';
+import { CustomerRegsitrationFacade } from './facade/customer-registration.facade';
 
 @NgModule({
   imports: [
@@ -21,6 +26,7 @@ import { ProfessionalRegistrationState } from './state/professional-registration
     ReactiveFormsModule,
     MvfIconComponent,
     RouterModule.forChild(accountCompletionRoutes),
+    IMaskModule,
   ],
   declarations: [
     AccountCompletionContainerComponent,
@@ -30,7 +36,14 @@ import { ProfessionalRegistrationState } from './state/professional-registration
     RegistrationProfessionalDocumentsComponent,
     RegistrationProfessionalBusinessComponent,
     RegistrationProfessionalReviewComponent,
+    CustomerRegistrationComponent,
   ],
-  providers: [ProfessionalRegistrationFacade, ProfessionalRegistrationState],
+  providers: [
+    ProfessionalRegistrationFacade,
+    ProfessionalRegistrationState,
+    CustomerRegistrationService,
+    CustomerRegistrationState,
+    CustomerRegsitrationFacade,
+  ],
 })
 export class AccountCompletionModule {}

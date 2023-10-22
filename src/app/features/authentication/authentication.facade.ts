@@ -26,6 +26,8 @@ export class AuthenticationFacade {
   loginSuccess$ = this.authState.loginSuccess$;
   loginError$ = this.authState.loginError$;
 
+  user$ = this.userState.user$;
+
   /**
    * Registra um usuário, chamando o service que se comunica com a API
    * e alterando o estado.
