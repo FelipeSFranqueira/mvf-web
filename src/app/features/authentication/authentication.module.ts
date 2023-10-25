@@ -26,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
     MvfControlErrorComponent,
     HttpClientModule,
     MvfLoaderComponent,
+    RouterModule,
   ],
   declarations: [LoginComponent, RegistrationComponent],
   providers: [CookieService],

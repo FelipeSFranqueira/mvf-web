@@ -5,5 +5,5 @@ export interface User {
   firstName?: string;
   lastName?: string;
   role?: string;
-  isFirstAccess?: string;
+  isFirstAccess?: boolean;
 }

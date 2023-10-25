@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { authenticationGuard } from './shared/guards/authentication.guard';
 
 export const appRoutes: Route[] = [
   {
@@ -14,6 +15,7 @@ export const appRoutes: Route[] = [
       import('./features/account-completion/account-completion.module').then(
         (m) => m.AccountCompletionModule
       ),
+    canActivate: [authenticationGuard],
   },
   {
     path: 'find-professionals',
@@ -21,5 +23,6 @@ export const appRoutes: Route[] = [
       import('./features/customer-workspace/customer-workspace.module').then(
         (m) => m.CustomerWorkspaceModule
       ),
+    canActivate: [authenticationGuard],
   },
 ];
