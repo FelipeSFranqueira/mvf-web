@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LoginRequest } from '../../models/login-request.model';
+import { Router } from '@angular/router';
 
 /**
  * Componente container da funcionalidade de Login.
@@ -36,7 +37,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private facade: AuthenticationFacade,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +56,13 @@ export class LoginComponent implements OnInit {
       .subscribe((success) =>
         success ? this.toastr.success('Sucesso') : null
       );
+    this.facade.user$.pipe(untilDestroyed(this)).subscribe((user) => {
+      if (user) {
+        user.isFirstAccess
+          ? this.router.navigate(['account-completion'])
+          : this.router.navigate(['find-professionals']);
+      }
+    });
   }
 
   /**
