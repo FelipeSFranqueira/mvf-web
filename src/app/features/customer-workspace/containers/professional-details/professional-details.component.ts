@@ -10,8 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { RequestsFacade } from '../../facade/requests.facade';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Request } from '../../models/request.model';
-import { UserState } from '../../../global/state/user.state';
-import { User } from '../../../global/models/user.model';
+import { UserState } from '../../../../shared/state/user.state';
+import { User } from '../../../../shared/models/user.model';
 
 /**
  * Componente de container dos detalhes de cada prestador de serviço.

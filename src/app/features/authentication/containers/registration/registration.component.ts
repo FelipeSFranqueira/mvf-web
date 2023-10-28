@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationFacade } from '../../authentication.facade';
-import { User } from '../../../../shared/models/user';
+import { RegistrationUser } from '../../models/registration-user.model';
 import { Observable } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -77,7 +77,7 @@ export class RegistrationComponent implements OnInit {
    * pelo facade.
    */
   register(): void {
-    const newUser: User = {
+    const newUser: RegistrationUser = {
       firstName: this.registrationForm.controls.firstName.value,
       lastName: this.registrationForm.controls.lastName.value,
       email: this.registrationForm.controls.email.value,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from '../../../../environment/environment';
-import { User } from '../../../shared/models/user';
+import { RegistrationUser } from '../models/registration-user.model';
 import { Observable } from 'rxjs';
 import { LoginRequest } from '../models/login-request.model';
 import { LoginResponse } from '../models/login-response.model';
@@ -22,7 +22,7 @@ export class AuthenticationService {
    * @param user
    * @returns {Observable<HttpResponse<any>>} Observable de resposta HTTP.
    */
-  register(user: User): Observable<HttpResponse<any>> {
+  register(user: RegistrationUser): Observable<HttpResponse<any>> {
     return this.http.post<HttpResponse<any>>(`${this.baseApi}/signup`, user);
   }
 
@@ -38,9 +38,9 @@ export class AuthenticationService {
   /**
    * Bate no endpoint que traz as informações do usuário
    * quando este já está logado.
-   * @returns {Observable<User>} Observable da interface User.
+   * @returns {Observable<RegistrationUser>} Observable da interface User.
    */
-  populateUser(): Observable<User> {
-    return this.http.get<User>(`${this.baseApi}/me`);
+  populateUser(): Observable<RegistrationUser> {
+    return this.http.get<RegistrationUser>(`${this.baseApi}/me`);
   }
 }

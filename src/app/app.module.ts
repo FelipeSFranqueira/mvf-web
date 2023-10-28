@@ -17,7 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from './features/authentication/api/authentication.service';
 import { AuthenticationFacade } from './features/authentication/authentication.facade';
 import { AuthenticationState } from './features/authentication/state/authentication.state';
-import { UserState } from './features/global/state/user.state';
+import { UserState } from './shared/state/user.state';
 registerLocaleData(ptBr);
 defineLocale('pt-br', ptBrLocale);
 

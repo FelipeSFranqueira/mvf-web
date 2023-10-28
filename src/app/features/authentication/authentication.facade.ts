@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './api/authentication.service';
 import { AuthenticationState } from './state/authentication.state';
-import { User } from '../../shared/models/user';
+import { RegistrationUser } from './models/registration-user.model';
 import { LoginRequest } from './models/login-request.model';
 import { CookieService } from 'ngx-cookie-service';
-import { UserState } from '../global/state/user.state';
+import { UserState } from '../../shared/state/user.state';
 
 /**
  * Classe Facade que serve como interface entre os componentes
@@ -33,7 +33,7 @@ export class AuthenticationFacade {
    * e alterando o estado.
    * @param user
    */
-  register(user: User): void {
+  register(user: RegistrationUser): void {
     this.authState.register();
     this.authenticationService.register(user).subscribe({
       next: () => this.authState.finishRegister(),
@@ -81,6 +81,9 @@ export class AuthenticationFacade {
    * @param token
    */
   private setTokenCookie(token: string): void {
-    this.cookieService.set('jwt', token);
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 1);
+
+    this.cookieService.set('jwt', token, expirationDate);
   }
 }

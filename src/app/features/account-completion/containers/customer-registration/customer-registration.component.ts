@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { CustomerRegsitrationFacade } from '../../facade/customer-registration.facade';
 import { AuthenticationFacade } from '../../../authentication/authentication.facade';
-import { User } from '../../../global/models/user.model';
+import { User } from '../../../../shared/models/user.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from '../../models/customer.model';
