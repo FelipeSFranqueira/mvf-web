@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="professionalRegistrationForm">
   <h3>Documentos</h3>
   <p class="text-offset small">
     Os seus documentos são essencias para validarmos se você é quem diz ser.
@@ -6,9 +6,8 @@
   </p>
 
   <p>
-    De início, precisamos que você envie uma foto de algum dos seus documentos
-    (RG ou CNH) frente e verso (aberto e fora do plástico de proteção), como no
-    exemplo a seguir:
+    De início, precisamos que você envie uma foto da sua CNH frente e verso
+    (aberto e fora do plástico de proteção), como no exemplo a seguir:
   </p>
 
   <div class="row mb-3">
@@ -17,13 +16,18 @@
     </div>
     <div class="container col">
       <div class="form-label">
-        <label for="document-upload">Foto do seu documento (RG ou CNH)</label>
+        <label for="document-upload">Foto da sua Carteira de Habilitação</label>
         <span class="d-block text-offset small">
           Esse dado é sigiloso e será usado apenas para validar a sua
           identidade, não se preocupe pois a imagem não será pública.
         </span>
       </div>
-      <input type="file" id="document-upload" class="form-control" />
+      <input
+        formControlName="cnhImage"
+        type="file"
+        id="document-upload"
+        class="form-control"
+      />
     </div>
   </div>
 
@@ -40,13 +44,17 @@
     <div class="container col">
       <div class="form-label">
         <label for="selfie-upload">Selfie segurando o documento</label>
-        <span class="d-block text-offset small"
-          >Esse dado é sigiloso e será usado apenas para validar a sua
-          identidade, não se preocupe pois a imagem não será pública e será
-          excluída após validação.</span
-        >
+        <span class="d-block text-offset small">
+          Esse dado é sigiloso e será usado apenas para validar a sua
+          identidade, não se preocupe pois a imagem não será pública.
+        </span>
       </div>
-      <input type="file" id="selfie-upload" class="form-control" />
+      <input
+        formControlName="userHoldingCnhImage"
+        type="file"
+        id="selfie-upload"
+        class="form-control"
+      />
     </div>
   </div>
 </form>

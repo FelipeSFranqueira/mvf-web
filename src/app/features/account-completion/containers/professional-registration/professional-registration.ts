@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegistrationFormSteps } from '../../utils/form-steps';
 import { ProfessionalRegistrationFacade } from '../../professional-registration.facade';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { professionalRegistrationFormGroup } from '../../utils/registration-forms';
 
 @UntilDestroy()
 @Component({
@@ -10,6 +11,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class ProfessionalRegistrationComponent implements OnInit {
   currentStep?: RegistrationFormSteps;
+  professionalRegistrationForm = professionalRegistrationFormGroup;
 
   readonly steps = RegistrationFormSteps;
 

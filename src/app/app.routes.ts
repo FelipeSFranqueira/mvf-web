@@ -15,7 +15,7 @@ export const appRoutes: Route[] = [
       import('./features/account-completion/account-completion.module').then(
         (m) => m.AccountCompletionModule
       ),
-    canActivate: [authenticationGuard],
+    canActivate: [],
   },
   {
     path: 'find-professionals',

@@ -1,5 +1,8 @@
-<form class="d-flex flex-column justify-content-start">
-  <div class="mb-3">
+<form
+  class="d-flex flex-column justify-content-start"
+  [formGroup]="professionalRegistrationForm"
+>
+  <div class="">
     <h3>Dados pessoais</h3>
     <p class="text-offset small">
       Antes de tudo, vamos começar conhecendo você. Cadastre aqui os seus dados
@@ -8,27 +11,11 @@
   </div>
 
   <div class="row mb-3">
-    <div class="container col-md-4 mb-md-0 mb-3">
-      <label for="firstName" class="form-label">Nome</label>
-      <input
-        type="text"
-        id="firstName"
-        class="form-control"
-        placeholder="Seu nome"
-      />
-    </div>
-    <div class="container col mb-3">
-      <label for="lastName" class="form-label">Sobrenome</label>
-      <input
-        type="text"
-        id="lastName"
-        class="form-control"
-        placeholder="Seu sobrenome"
-      />
-    </div>
     <div class="container col-12 mb-3">
       <label for="cpf" class="form-label">CPF</label>
       <input
+        formControlName="cpf"
+        imask="000.000.000-00"
         type="text"
         id="cpf"
         class="form-control"
@@ -41,26 +28,19 @@
     <div class="container col">
       <div class="form-label">
         <label for="preferredName">Nome público</label>
-        <span class="d-block text-offset small"
-          >Esse é o nome que será exibido no seu perfil quando um cliente for te
-          contratar. Caso deixe em branco, será exibido o seu primeiro e útlimo
-          nome. Não se preocupe, para questões legais o seu nome verdadeiro será
-          usado.</span
-        >
+        <span class="d-block text-offset small">
+          Esse é o nome que será exibido no seu perfil quando um cliente for te
+          contratar. Não se preocupe, para questões legais o seu nome verdadeiro
+          será usado.
+        </span>
       </div>
       <input
+        formControlName="preferredName"
         type="text"
         id="preferredName"
         class="form-control"
         placeholder="Seu nome visível a todos"
       />
-    </div>
-  </div>
-
-  <div class="row mb-3 align-items-end">
-    <div class="container col">
-      <label for="birthdate" class="form-label">Data de nascimento</label>
-      <input type="date" id="birthdate" class="form-control" />
     </div>
   </div>
 </form>

@@ -20,15 +20,19 @@
         [ngSwitch]="currentStep"
       >
         <mvf-registration-professional-info
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.UserRegistration"
         />
         <mvf-registration-professional-documents
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.DocumentsRegistration"
         />
         <mvf-registration-professional-business
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.BusinessRegistration"
         />
         <mvf-registration-professional-review
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.ReviewData"
         />
 
