@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { RegistrationFormSteps } from '../utils/form-steps';
 
 @Injectable()
@@ -8,8 +8,44 @@ export class ProfessionalRegistrationState {
     RegistrationFormSteps.UserRegistration
   );
 
+  private _isProfessionalRegistrationLoading$ = new BehaviorSubject<boolean>(
+    false
+  );
+  private _hasProfessionalRegistrationSucceed$ = new Subject<boolean>();
+  private _hasProfessionalRegistrationFailed$ = new Subject<boolean>();
+
+  get isProfessionalRegistrationLoading$(): Observable<boolean> {
+    return this._isProfessionalRegistrationLoading$.asObservable();
+  }
+
+  get hasProfessionalRegistrationSucceed$(): Observable<boolean> {
+    return this._hasProfessionalRegistrationSucceed$.asObservable();
+  }
+
+  get hasProfessionalRegistrationFailed$(): Observable<boolean> {
+    return this._hasProfessionalRegistrationFailed$.asObservable();
+  }
+
   get registrationStep$(): Observable<RegistrationFormSteps> {
     return this._registrationStep$.asObservable();
+  }
+
+  finishProfessionalRegistration(): void {
+    this._isProfessionalRegistrationLoading$.next(true);
+    this._hasProfessionalRegistrationSucceed$.next(false);
+    this._hasProfessionalRegistrationFailed$.next(false);
+  }
+
+  professionalRegistrationSuccess(): void {
+    this._isProfessionalRegistrationLoading$.next(false);
+    this._hasProfessionalRegistrationSucceed$.next(true);
+    this._hasProfessionalRegistrationFailed$.next(false);
+  }
+
+  professionalRegistrationFail(): void {
+    this._isProfessionalRegistrationLoading$.next(false);
+    this._hasProfessionalRegistrationSucceed$.next(false);
+    this._hasProfessionalRegistrationFailed$.next(true);
   }
 
   goToNextStep(): void {

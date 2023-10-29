@@ -12,13 +12,14 @@ import { RegistrationProfessionalReviewComponent } from './components/registrati
 import { MvfIconComponent } from 'modules/shared/mvf-ui';
 import { accountCompletionRoutes } from './account-completion.routes';
 import { AccountCompletionContainerComponent } from './containers/account-completion-container/account-completion-container.component';
-import { ProfessionalRegistrationFacade } from './professional-registration.facade';
 import { ProfessionalRegistrationState } from './state/professional-registration.state';
 import { CustomerRegistrationComponent } from './containers/customer-registration/customer-registration.component';
 import { IMaskModule } from 'angular-imask';
 import { CustomerRegistrationService } from './api/customer-registration.service';
 import { CustomerRegistrationState } from './state/customer-registration.state';
 import { CustomerRegsitrationFacade } from './facade/customer-registration.facade';
+import { ProfessionalRegistrationFacade } from './facade/professional-registration.facade';
+import { ProfessionalRegistrationService } from './api/professional-registration.service';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { CustomerRegsitrationFacade } from './facade/customer-registration.facad
   providers: [
     ProfessionalRegistrationFacade,
     ProfessionalRegistrationState,
+    ProfessionalRegistrationService,
     CustomerRegistrationService,
     CustomerRegistrationState,
     CustomerRegsitrationFacade,
