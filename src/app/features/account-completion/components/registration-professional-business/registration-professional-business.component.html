@@ -22,6 +22,7 @@
         type="text"
         class="form-control"
         placeholder="0000000000"
+        imask="0000000000"
       />
     </div>
     <div class="container col">
@@ -35,6 +36,82 @@
         <option value="B">B</option>
         <option value="C">C</option>
         <option value="D">D</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="container">
+      <div class="form-label">
+        <label for="base-value" class="form-label">Valor base</label>
+        <span class="d-block text-offset small">
+          Esse será o valor inicial/mínimo cobrado pelos seus serviços.
+        </span>
+      </div>
+      <div class="input-group">
+        <span class="input-group-text">R$</span>
+        <input
+          formControlName="baseValue"
+          type="number"
+          class="form-control"
+          id="base-value"
+          placeholder="50"
+        />
+        <span class="input-group-text">,00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="container">
+      <div class="form-label">
+        <label for="value-per-km" class="form-label">Valor por Km</label>
+        <span class="d-block text-offset small">
+          O preço do seu serviço é calculado a partir da soma entre o valor base
+          e a distância em quilometros multiplicada pelo preço cobrado por Km.
+        </span>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">R$</span>
+        <input
+          [formControl]="valuePerKmHelper"
+          type="text"
+          id="value-per-km"
+          class="form-control"
+          placeholder="05.50"
+          imask="00.00"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="container">
+      <label for="state" class="form-label">Estado atendido</label>
+      <select
+        formControlName="supportedState"
+        id="state"
+        class="form-select form-select-md"
+        (change)="onSelect($event.target)"
+      >
+        <option *ngFor="let state of states" [value]="state.sigla">
+          {{ state.nome }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="container">
+      <label for="state" class="form-label">Cidade atendida</label>
+      <select
+        [formControl]="supportedCitiesHelper"
+        id="state"
+        class="form-select form-select-md"
+      >
+        <option *ngFor="let city of cities" [value]="city.nome">
+          {{ city.nome }}
+        </option>
       </select>
     </div>
   </div>

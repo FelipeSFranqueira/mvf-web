@@ -20,6 +20,9 @@ import { CustomerRegistrationState } from './state/customer-registration.state';
 import { CustomerRegsitrationFacade } from './facade/customer-registration.facade';
 import { ProfessionalRegistrationFacade } from './facade/professional-registration.facade';
 import { ProfessionalRegistrationService } from './api/professional-registration.service';
+import { StateCityFacade } from './facade/state-city.facade';
+import { StateCityService } from './api/state-city.service';
+import { StateCityState } from './state/state-city.state';
 
 @NgModule({
   imports: [
@@ -46,6 +49,9 @@ import { ProfessionalRegistrationService } from './api/professional-registration
     CustomerRegistrationService,
     CustomerRegistrationState,
     CustomerRegsitrationFacade,
+    StateCityFacade,
+    StateCityState,
+    StateCityService,
   ],
 })
 export class AccountCompletionModule {}

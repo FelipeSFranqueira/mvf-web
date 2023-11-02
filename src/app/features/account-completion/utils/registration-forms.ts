@@ -24,16 +24,16 @@ export const professionalRegistrationFormGroup =
       validators: [Validators.required],
       nonNullable: true,
     }),
-    cnhCategory: new FormControl('', {
+    cnhCategory: new FormControl('A', {
       validators: [Validators.required],
       nonNullable: true,
     }),
-    baseValue: new FormControl(0, {
+    baseValue: new FormControl(null, {
       validators: [Validators.required, Validators.min(1)],
       nonNullable: true,
     }),
-    valuePerKm: new FormControl(0, {
-      validators: [Validators.required, Validators.min(0.001)],
+    valuePerKm: new FormControl(null, {
+      validators: [Validators.required, Validators.min(0.01)],
       nonNullable: true,
     }),
     supportedState: new FormControl('', {

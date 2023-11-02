@@ -25,7 +25,7 @@ export class ProfessionalRegistrationFacade {
 
     this.service.finishRegistration(professional).subscribe({
       next: (professional) => {
-        this.state.professionalRegistrationSuccess();
+        this.state.professionalRegistrationSuccess(professional);
       },
       error: () => {
         this.state.professionalRegistrationFail();
