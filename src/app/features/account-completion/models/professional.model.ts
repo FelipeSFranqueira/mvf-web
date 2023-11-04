@@ -1,5 +1,6 @@
 export interface Professional {
   id?: string;
+  isEnabled?: boolean;
   users_id: string;
   cpf: string;
   preferredName: string;

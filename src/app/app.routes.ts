@@ -15,7 +15,7 @@ export const appRoutes: Route[] = [
       import('./features/account-completion/account-completion.module').then(
         (m) => m.AccountCompletionModule
       ),
-    canActivate: [],
+    canActivate: [authenticationGuard],
   },
   {
     path: 'find-professionals',
@@ -23,6 +23,14 @@ export const appRoutes: Route[] = [
       import('./features/customer-workspace/customer-workspace.module').then(
         (m) => m.CustomerWorkspaceModule
       ),
+    canActivate: [authenticationGuard],
+  },
+  {
+    path: 'professional-workspace',
+    loadChildren: () =>
+      import(
+        './features/professional-workspace/professional-workspace.module'
+      ).then((m) => m.ProfessionalWorkspaceModule),
     canActivate: [authenticationGuard],
   },
 ];

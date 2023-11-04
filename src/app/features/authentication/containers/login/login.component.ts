@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { LoginRequest } from '../../models/login-request.model';
 import { Router } from '@angular/router';
+import { UserRole } from '../../../../shared/enums/role.enum';
 
 /**
  * Componente container da funcionalidade de Login.
@@ -60,7 +61,11 @@ export class LoginComponent implements OnInit {
       if (user) {
         user.isFirstAccess
           ? this.router.navigate(['account-completion'])
-          : this.router.navigate(['find-professionals']);
+          : this.router.navigate(
+              user.role === UserRole.Professional
+                ? ['professional-workspace']
+                : ['find-professionals']
+            );
       }
     });
   }

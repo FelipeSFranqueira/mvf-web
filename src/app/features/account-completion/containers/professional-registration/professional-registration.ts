@@ -66,7 +66,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
       .subscribe((success) => {
         if (success) {
           this.toastr.success('Registro finalizado com sucesso!');
-          this.authFacade.populateUserFromJwt();
+          window.location.reload();
         }
       });
     this.facade.hasProfessionalRegistrationFailed$

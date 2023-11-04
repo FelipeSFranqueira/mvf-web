@@ -1,0 +1,26 @@
+<div class="row">
+  <div
+    class="container d-flex flex-column justify-items-center text-center p-3 max-w-lg"
+    *ngIf="!isEnabled"
+  >
+    <h2 class="mb-3">
+      Sua conta está em processo de análise. Te avisaremos assim que você for
+      aprovado.
+    </h2>
+    <p>
+      Para garantir a segurança dos clientes, cada profissional passa por uma
+      análise de comprovação de identidade. Volte mais tarde para verificar o
+      status da sua conta.
+    </p>
+  </div>
+  <div
+    class="container d-flex flex-column justify-items-center text-center p-3 max-w-lg"
+    *ngIf="isEnabled"
+  >
+    <h2 class="mb-3">Sua conta foi aprovada!</h2>
+    <p>
+      Agora seus serviços já aparecem como disponíveis para possíveis clientes.
+      Fique atento caso novos clientes entrem em contato com você.
+    </p>
+  </div>
+</div>
