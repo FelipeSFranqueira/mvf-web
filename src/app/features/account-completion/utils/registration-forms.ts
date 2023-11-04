@@ -44,4 +44,16 @@ export const professionalRegistrationFormGroup =
       validators: [Validators.required],
       nonNullable: true,
     }),
+    vehicleType: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    vehicleName: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    vehicleImage: new FormControl(null, {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
   });

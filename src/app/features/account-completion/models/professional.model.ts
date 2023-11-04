@@ -1,4 +1,5 @@
 export interface Professional {
+  id?: string;
   users_id: string;
   cpf: string;
   preferredName: string;

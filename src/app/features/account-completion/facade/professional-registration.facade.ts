@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { ProfessionalRegistrationService } from '../api/professional-registration.service';
 import { ProfessionalRegistrationState } from '../state/professional-registration.state';
-import { Professional } from '../models/professional.model';
+import { professionalAndVehicle } from '../models/professionalAndVehicle.model';
 
 @Injectable()
 export class ProfessionalRegistrationFacade {
@@ -20,10 +20,12 @@ export class ProfessionalRegistrationFacade {
   hasProfessionalRegistrationFailed$ =
     this.state.hasProfessionalRegistrationFailed$;
 
-  finishProfessionalRegistration(professional: Professional): void {
+  finishProfessionalRegistration(
+    professionalAndVehicle: professionalAndVehicle
+  ): void {
     this.state.finishProfessionalRegistration();
 
-    this.service.finishRegistration(professional).subscribe({
+    this.service.finishRegistration(professionalAndVehicle).subscribe({
       next: (professional) => {
         this.state.professionalRegistrationSuccess(professional);
       },

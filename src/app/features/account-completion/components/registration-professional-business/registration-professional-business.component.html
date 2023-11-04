@@ -125,12 +125,16 @@
       <label for="vehicle-category" class="form-label">
         Categoria do veículo
       </label>
-      <select id="vehicle-category" class="form-select form-select-md">
-        <option value="bike">Motocicleta</option>
-        <option value="car">Carro</option>
-        <option value="pickup">Caminhonete</option>
-        <option value="van">Van ou Furgão</option>
-        <option value="truck">Caminhão</option>
+      <select
+        id="vehicle-category"
+        class="form-select form-select-md"
+        formControlName="vehicleType"
+      >
+        <option value="Motocicleta">Motocicleta</option>
+        <option value="Carro">Carro</option>
+        <option value="Caminhonete">Caminhonete</option>
+        <option value="Furgão">Van ou Furgão</option>
+        <option value="Caminhão">Caminhão</option>
       </select>
     </div>
   </div>
@@ -139,6 +143,7 @@
     <div class="container">
       <label for="vehicle-model" class="form-label">Modelo do veículo</label
       ><input
+        formControlName="vehicleName"
         type="text"
         id="vehicle-model"
         class="form-control"
@@ -156,7 +161,12 @@
           visível aos seus possíveis clientes dentro da plataforma
         </span>
       </div>
-      <input type="file" id="vehicle-photo" class="form-control" />
+      <input
+        formControlName="vehicleImage"
+        type="file"
+        id="vehicle-photo"
+        class="form-control"
+      />
     </div>
   </div>
 </form>

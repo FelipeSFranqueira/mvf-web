@@ -1,5 +1,6 @@
-export enum Role {
-  user = 'USER',
-  customer = 'CUSTOMER',
-  professional = 'PROFESSIONAL',
+export enum UserRole {
+  User = 'USER',
+  Customer = 'CUSTOMER',
+  Professional = 'PROFESSIONAL',
+  Super = 'SUPER',
 }

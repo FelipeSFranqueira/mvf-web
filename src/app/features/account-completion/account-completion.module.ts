@@ -9,7 +9,7 @@ import { RegistrationProfessionalInfoComponent } from './components/registration
 import { RegistrationProfessionalDocumentsComponent } from './components/registration-professional-documents/registration-professional-documents';
 import { RegistrationProfessionalBusinessComponent } from './components/registration-professional-business/registration-professional-business.component';
 import { RegistrationProfessionalReviewComponent } from './components/registration-professional-review/registration-professional-review';
-import { MvfIconComponent } from 'modules/shared/mvf-ui';
+import { MvfIconComponent, MvfLoaderComponent } from 'modules/shared/mvf-ui';
 import { accountCompletionRoutes } from './account-completion.routes';
 import { AccountCompletionContainerComponent } from './containers/account-completion-container/account-completion-container.component';
 import { ProfessionalRegistrationState } from './state/professional-registration.state';
@@ -31,6 +31,7 @@ import { StateCityState } from './state/state-city.state';
     MvfIconComponent,
     RouterModule.forChild(accountCompletionRoutes),
     IMaskModule,
+    MvfLoaderComponent,
   ],
   declarations: [
     AccountCompletionContainerComponent,

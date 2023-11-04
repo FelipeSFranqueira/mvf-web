@@ -3,7 +3,6 @@ import { RegistrationFormSteps } from '../../utils/form-steps';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { professionalRegistrationFormGroup } from '../../utils/registration-forms';
 import { ProfessionalRegistrationFacade } from '../../facade/professional-registration.facade';
-import { Professional } from '../../models/professional.model';
 import { AuthenticationFacade } from '../../../authentication/authentication.facade';
 import { User } from '../../../../shared/models/user.model';
 import { Router } from '@angular/router';
@@ -11,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { StateCityFacade } from '../../facade/state-city.facade';
 import { City, State } from '../../models/state-city.model';
 import { Observable } from 'rxjs';
+import { professionalAndVehicle } from '../../models/professionalAndVehicle.model';
 
 @UntilDestroy()
 @Component({
@@ -24,6 +24,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
   states$: Observable<State[]>;
   cities$: Observable<City[]>;
   isStateCityLoading$: Observable<boolean>;
+  isRegistrationLoading$: Observable<boolean>;
 
   readonly steps = RegistrationFormSteps;
   private user: User;
@@ -42,6 +43,8 @@ export class ProfessionalRegistrationComponent implements OnInit {
     this.states$ = this.stateCityFacade.states$;
     this.cities$ = this.stateCityFacade.cities$;
     this.isStateCityLoading$ = this.stateCityFacade.isStateCityLoading$;
+    this.isRegistrationLoading$ =
+      this.facade.isProfessionalRegistrationLoading$;
 
     this.stateCityFacade.getStates();
 
@@ -50,7 +53,7 @@ export class ProfessionalRegistrationComponent implements OnInit {
       .subscribe((fail) =>
         fail
           ? this.toastr.error(
-              'Houve um erro enquanto buscávamos as cidades e estados disponíveis. Tente novamente mais tarde ou contate o suporte.'
+              'Houve um erro enquanto buscávamos as cidades e estados disponíveis. Atualize a página para tentar novamente.'
             )
           : null
       );
@@ -60,32 +63,33 @@ export class ProfessionalRegistrationComponent implements OnInit {
       .subscribe((step) => (this.currentStep = step));
     this.facade.hasProfessionalRegistrationSucceed$
       .pipe(untilDestroyed(this))
-      .subscribe(() => {
-        this.toastr.success('Registro finalizado com sucesso!');
+      .subscribe((success) => {
+        if (success) {
+          this.toastr.success('Registro finalizado com sucesso!');
+          this.authFacade.populateUserFromJwt();
+        }
       });
+    this.facade.hasProfessionalRegistrationFailed$
+      .pipe(untilDestroyed(this))
+      .subscribe((fail) =>
+        fail
+          ? this.toastr.error(
+              'Houve um problema ao finalizar seu cadastro. Tente novamente mais tarde ou contate o suporte.'
+            )
+          : null
+      );
   }
 
   finishRegistration(): void {
-    const newProfessional: Professional = {
-      users_id: 'this.user.id',
-      ...(this.professionalRegistrationForm.value as Professional),
-      // cpf: this.professionalRegistrationForm.controls.cpf.value,
-      // preferredName: this.professionalRegistrationForm.controls.preferredName.value,
-      // cnhImage: this.professionalRegistrationForm.controls.cnhImage.value,
-      // userHoldingCnhImage: this.professionalRegistrationForm.controls.userHoldingCnhImage.value,
-      // cnhNumber: this.professionalRegistrationForm.controls.cnhNumber.value,
-      // cnhCategory: this.professionalRegistrationForm.controls.cnhCategory.value,
-      // baseValue: this.professionalRegistrationForm.controls.baseValue.value,
-      // valuePerKm: this.professionalRegistrationForm.controls.valuePerKm.value,
-      // supportedState: this.professionalRegistrationForm.controls.supportedState.value,
-      // supportedCities: this.professionalRegistrationForm.controls.supportedCities.value
+    const newProfessional: professionalAndVehicle = {
+      users_id: this.user.id,
+      ...(this.professionalRegistrationForm.value as professionalAndVehicle),
     };
 
-    console.log(newProfessional);
+    this.facade.finishProfessionalRegistration(newProfessional);
   }
 
   getCitiesByState(state: string): void {
-    console.log('get');
     this.stateCityFacade.getCitiesByState(state);
   }
 }

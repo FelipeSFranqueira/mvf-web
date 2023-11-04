@@ -11,4 +11,7 @@ export interface ProfessionalRegistrationForm {
   valuePerKm: FormControl<number>;
   supportedState: FormControl<string>;
   supportedCities: FormControl<string[]>;
+  vehicleType: FormControl<string>;
+  vehicleName: FormControl<string>;
+  vehicleImage: FormControl<File | null>;
 }

@@ -43,7 +43,7 @@
         <div class="d-flex justify-content-end gap-2">
           <button
             class="ml-auto btn btn-outline-primary"
-            *ngIf="currentStep !== steps.UserRegistration"
+            *ngIf="currentStep !== steps.UserRegistration && (isRegistrationLoading$ | async) === false"
             (click)="facade.returnToPreviousStep()"
           >
             Voltar
@@ -55,9 +55,10 @@
           >
             Próximo
           </button>
+          <lib-mvf-loader *ngIf="isRegistrationLoading$ | async" />
           <button
             class="ml-auto btn btn-primary"
-            *ngIf="currentStep === steps.BusinessRegistration"
+            *ngIf="currentStep === steps.BusinessRegistration && (isRegistrationLoading$ | async) === false"
             [disabled]="professionalRegistrationForm.invalid"
             (click)="finishRegistration()"
           >
