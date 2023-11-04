@@ -25,4 +25,12 @@ export const appRoutes: Route[] = [
       ),
     canActivate: [authenticationGuard],
   },
+  {
+    path: 'professional-workspace',
+    loadChildren: () =>
+      import(
+        './features/professional-workspace/professional-workspace.module'
+      ).then((m) => m.ProfessionalWorkspaceModule),
+    canActivate: [authenticationGuard],
+  },
 ];

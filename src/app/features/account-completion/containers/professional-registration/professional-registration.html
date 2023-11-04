@@ -20,36 +20,47 @@
         [ngSwitch]="currentStep"
       >
         <mvf-registration-professional-info
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.UserRegistration"
         />
         <mvf-registration-professional-documents
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.DocumentsRegistration"
         />
         <mvf-registration-professional-business
+          [states]="states$ | async"
+          [cities]="cities$ | async"
+          [isStateCityLoading]="isStateCityLoading$ | async"
+          [professionalRegistrationForm]="professionalRegistrationForm"
+          (getCities)="getCitiesByState($event)"
           *ngSwitchCase="steps.BusinessRegistration"
         />
-        <mvf-registration-professional-review
+        <!-- <mvf-registration-professional-review
+          [professionalRegistrationForm]="professionalRegistrationForm"
           *ngSwitchCase="steps.ReviewData"
-        />
+        /> -->
 
         <div class="d-flex justify-content-end gap-2">
           <button
             class="ml-auto btn btn-outline-primary"
-            *ngIf="currentStep !== steps.UserRegistration"
+            *ngIf="currentStep !== steps.UserRegistration && (isRegistrationLoading$ | async) === false"
             (click)="facade.returnToPreviousStep()"
           >
             Voltar
           </button>
           <button
             class="ml-auto btn btn-primary"
-            *ngIf="currentStep !== steps.ReviewData"
+            *ngIf="currentStep !== steps.BusinessRegistration"
             (click)="facade.goToNextStep()"
           >
             Próximo
           </button>
+          <lib-mvf-loader *ngIf="isRegistrationLoading$ | async" />
           <button
             class="ml-auto btn btn-primary"
-            *ngIf="currentStep === steps.ReviewData"
+            *ngIf="currentStep === steps.BusinessRegistration && (isRegistrationLoading$ | async) === false"
+            [disabled]="professionalRegistrationForm.invalid"
+            (click)="finishRegistration()"
           >
             Finalizar
           </button>

@@ -26,7 +26,6 @@ import { RequestsService } from './api/requests.service';
 import { RequestsState } from './state/requests.state';
 import { RequestsFacade } from './facade/requests.facade';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
-import { UserState } from '../../shared/state/user.state';
 
 /**
  * Módulo da funconalidade de CustomerWorkspace.

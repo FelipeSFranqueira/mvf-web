@@ -1,25 +1,59 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-const userData = new FormGroup({
-  birthdate: new FormControl('', Validators.required),
-  cpf: new FormControl('', [
-    Validators.required,
-    Validators.minLength(14),
-    Validators.maxLength(14),
-  ]),
-  phoneNumber: new FormControl('', Validators.required),
-});
+import { ProfessionalRegistrationForm } from '../models/forms.model';
 
-export const professionalForm = new FormGroup({
-  userData,
-  cnh: new FormControl('', Validators.required),
-  hasCnpj: new FormControl(false, Validators.required),
-  cnpj: new FormControl(''),
-  legalName: new FormControl(''),
-});
-
-export const vehicleForm = new FormGroup({
-  vehicleType: new FormControl('', Validators.required),
-  vehiclePlate: new FormControl('', Validators.required),
-  vehicleDocument: new FormControl('', Validators.required),
-});
+export const professionalRegistrationFormGroup =
+  new FormGroup<ProfessionalRegistrationForm>({
+    cpf: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    preferredName: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    cnhImage: new FormControl(null, {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    userHoldingCnhImage: new FormControl(null, {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    cnhNumber: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    cnhCategory: new FormControl('A', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    baseValue: new FormControl(null, {
+      validators: [Validators.required, Validators.min(1)],
+      nonNullable: true,
+    }),
+    valuePerKm: new FormControl(null, {
+      validators: [Validators.required, Validators.min(0.01)],
+      nonNullable: true,
+    }),
+    supportedState: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    supportedCities: new FormControl([], {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    vehicleType: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    vehicleName: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    vehicleImage: new FormControl(null, {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+  });

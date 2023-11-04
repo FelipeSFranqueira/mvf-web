@@ -9,16 +9,20 @@ import { RegistrationProfessionalInfoComponent } from './components/registration
 import { RegistrationProfessionalDocumentsComponent } from './components/registration-professional-documents/registration-professional-documents';
 import { RegistrationProfessionalBusinessComponent } from './components/registration-professional-business/registration-professional-business.component';
 import { RegistrationProfessionalReviewComponent } from './components/registration-professional-review/registration-professional-review';
-import { MvfIconComponent } from 'modules/shared/mvf-ui';
+import { MvfIconComponent, MvfLoaderComponent } from 'modules/shared/mvf-ui';
 import { accountCompletionRoutes } from './account-completion.routes';
 import { AccountCompletionContainerComponent } from './containers/account-completion-container/account-completion-container.component';
-import { ProfessionalRegistrationFacade } from './professional-registration.facade';
 import { ProfessionalRegistrationState } from './state/professional-registration.state';
 import { CustomerRegistrationComponent } from './containers/customer-registration/customer-registration.component';
 import { IMaskModule } from 'angular-imask';
 import { CustomerRegistrationService } from './api/customer-registration.service';
 import { CustomerRegistrationState } from './state/customer-registration.state';
 import { CustomerRegsitrationFacade } from './facade/customer-registration.facade';
+import { ProfessionalRegistrationFacade } from './facade/professional-registration.facade';
+import { ProfessionalRegistrationService } from './api/professional-registration.service';
+import { StateCityFacade } from './facade/state-city.facade';
+import { StateCityService } from './api/state-city.service';
+import { StateCityState } from './state/state-city.state';
 
 @NgModule({
   imports: [
@@ -27,6 +31,7 @@ import { CustomerRegsitrationFacade } from './facade/customer-registration.facad
     MvfIconComponent,
     RouterModule.forChild(accountCompletionRoutes),
     IMaskModule,
+    MvfLoaderComponent,
   ],
   declarations: [
     AccountCompletionContainerComponent,
@@ -41,9 +46,13 @@ import { CustomerRegsitrationFacade } from './facade/customer-registration.facad
   providers: [
     ProfessionalRegistrationFacade,
     ProfessionalRegistrationState,
+    ProfessionalRegistrationService,
     CustomerRegistrationService,
     CustomerRegistrationState,
     CustomerRegsitrationFacade,
+    StateCityFacade,
+    StateCityState,
+    StateCityService,
   ],
 })
 export class AccountCompletionModule {}
