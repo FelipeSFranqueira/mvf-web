@@ -33,4 +33,12 @@ export const appRoutes: Route[] = [
       ).then((m) => m.ProfessionalWorkspaceModule),
     canActivate: [authenticationGuard],
   },
+  {
+    path: 'super-panel',
+    loadChildren: () =>
+      import('./features/super-workspace/super-workspace.module').then(
+        (m) => m.SuperWorkspaceModule
+      ),
+    canActivate: [authenticationGuard],
+  },
 ];

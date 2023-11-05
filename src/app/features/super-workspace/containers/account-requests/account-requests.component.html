@@ -1,0 +1,22 @@
+<div class="container p-2">
+  <div
+    class="border mb-3 p-3 rounded"
+    *ngFor="let professional of professionalsList"
+  >
+    <p>Nome: {{ professional.preferredName }}</p>
+    <p>CNH: {{ professional.cnhNumber }}</p>
+    <div class="d-flex gap-3 flex-column">
+      <img [src]="professional.cnhImage" width="500px" />
+      <img [src]="professional.userHoldingCnhImage" width="500px" />
+    </div>
+    <div class="mt-4 d-flex gap-2">
+      <button class="btn btn-danger" (click)="decline(professional)">
+        Negar
+      </button>
+      <button class="btn btn-success" (click)="approve(professional)">
+        Aprovar
+      </button>
+    </div>
+  </div>
+  <div *ngIf="!professionalsList.length">Nenhum registro pendente.</div>
+</div>
