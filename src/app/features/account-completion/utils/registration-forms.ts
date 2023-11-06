@@ -12,6 +12,10 @@ export const professionalRegistrationFormGroup =
       validators: [Validators.required],
       nonNullable: true,
     }),
+    phoneNumber: new FormControl('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
     cnhImage: new FormControl(null, {
       validators: [Validators.required],
       nonNullable: true,

@@ -56,15 +56,6 @@ export class RegistrationComponent implements OnInit {
     this.success$ = this.facade.isRegistered$;
     this.hasError$ = this.facade.error$;
 
-    this.hasError$
-      .pipe(untilDestroyed(this))
-      .subscribe((hasError) =>
-        hasError
-          ? this.toastr.error(
-              'Ocorreu um erro ao criar sua conta. Tente novamente mais tarde ou contate o suporte.'
-            )
-          : null
-      );
     this.success$
       .pipe(untilDestroyed(this))
       .subscribe((success) =>

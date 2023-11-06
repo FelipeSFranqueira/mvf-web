@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 export interface ProfessionalRegistrationForm {
   cpf: FormControl<string>;
   preferredName: FormControl<string>;
+  phoneNumber: FormControl<string>;
   cnhImage: FormControl<File | null>;
   userHoldingCnhImage: FormControl<File | null>;
   cnhNumber: FormControl<string>;

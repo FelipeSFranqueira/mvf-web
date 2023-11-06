@@ -5,6 +5,8 @@ import { RegistrationUser } from './models/registration-user.model';
 import { LoginRequest } from './models/login-request.model';
 import { CookieService } from 'ngx-cookie-service';
 import { UserState } from '../../shared/state/user.state';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Classe Facade que serve como interface entre os componentes
@@ -16,7 +18,8 @@ export class AuthenticationFacade {
     private authenticationService: AuthenticationService,
     private authState: AuthenticationState,
     private userState: UserState,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private toastr: ToastrService
   ) {}
 
   isRegistering$ = this.authState.isRegistering$;
@@ -37,7 +40,21 @@ export class AuthenticationFacade {
     this.authState.register();
     this.authenticationService.register(user).subscribe({
       next: () => this.authState.finishRegister(),
-      error: () => this.authState.dispatchError(),
+      error: (err: HttpErrorResponse) => {
+        this.authState.dispatchError();
+        if (
+          err.error.code === 'ERROR_CODE_INPUT_ERROR' &&
+          err.error.payload.param === 'password'
+        ) {
+          this.toastr.error(
+            'Senha fraca. Sua senha deve conter no mínimo 8 caracteres, misturando letras, números e caracteres especiais.'
+          );
+        } else {
+          this.toastr.error(
+            'Ocorreu um erro ao criar sua conta. Tente novamente mais tarde ou contate o suporte.'
+          );
+        }
+      },
     });
   }
 
