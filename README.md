@@ -8,17 +8,17 @@
 
 🔹 [Descrição do projeto](#descrição-do-projeto)
 
-🔹 [Funcionalidades](#funcionalidades-⚙️)
+🔹 [Funcionalidades](#funcionalidades)
 
-🔹 [Pré-requisitos](#pré-requisitos-⚠️)
+🔹 [Pré-requisitos](#pré-requisitos)
 
 🔹 [Como rodar a aplicação](#como-rodar-a-aplicação)
 
 🔹 [Testes realizados](#testes-realizados)
 
-🔹 [Banco de Dados](#banco-de-dados-🗂️)
+🔹 [Banco de Dados](#banco-de-dados)
 
-🔹 [Linguagens, dependências e libs utilizadas](#linguagens-dependencias-e-libs-utilizadas-📚)
+🔹 [Linguagens, dependências e libs utilizadas](#linguagens-dependencias-e-libs-utilizadas)
 
 🔹 [Desenvolvedores/Contribuintes](#desenvolvedorescontribuintes)
 
@@ -28,7 +28,7 @@ O Me Vê Um Frete oferece uma solução abrangente para atender às necessidades
 
 Por outro lado, os prestadores de serviços têm à disposição na plataforma um ambiente adequado para ofertar os seus serviços, de acordo com a sua disponibilidade. Esses serviços ficarão visíveis para os usuários, com base em filtros que consideram os critérios estabelecidos.
 
-## Funcionalidades ⚙️
+## Funcionalidades
 
 ✔️ Cadastro de usuário cliente
 
@@ -50,7 +50,7 @@ Por outro lado, os prestadores de serviços têm à disposição na plataforma u
 
 ✔️ (Super User) Gerenciar solicitações de registro de prestadores de serviço
 
-## Pré-requisitos ⚠️
+## Pré-requisitos
 
 Node.js (versão 20.9.0);
 
@@ -85,11 +85,11 @@ TESTE DE CAIXA BRANCA - Testar os métodos da tela de Login.
 TESTE DE REQUISITOS NÃO FUNCIONAIS - Testar alguns tópicos dentre os tipos,Desempenho, Usuabilidade, Segurança e Portabilidade.
 <img src="docs/assets/Requisitos não Funcionais.png"/>
 
-## Banco de Dados 🗂️
+## Banco de Dados
 
 Para a parte do back-end do projeto estamos utilizando o [Xano](https://www.xano.com), uma ferramenta No-Code onde é possivel construir toda a parte de banco de dados e back-end do seu projeto web, mével ou IoT.
 
-## Linguagens, dependencias e libs utilizadas 📚
+## Linguagens, dependencias e libs utilizadas
 
 ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 
