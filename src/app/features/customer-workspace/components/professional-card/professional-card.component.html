@@ -1,12 +1,20 @@
 <div class="card" style="width: 18rem">
   <!-- <img src="..." class="card-img-top" alt="..." /> -->
   <div class="card-body">
-    <h5 class="card-title">{{ professionalName }}</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
+    <h5 class="card-title">{{ professional.preferredName }}</h5>
+    <div class="mb-3">
+      <p class="mb-0">
+        Valor base: {{ professional.baseValue | currency : 'BRL' }}
+      </p>
+      <p class="mb-0">
+        Valor por Km: {{ professional.valuePerKm | currency : 'BRL' }}
+      </p>
+    </div>
+    <p class="badge bg-primary">
+      {{ professional.totalValue | currency : 'BRL' }}
     </p>
-    <p class="badge bg-primary">{{ totalCost | currency : 'BRL' }}</p>
-    <a href="#" class="d-block btn btn-primary">Go somewhere</a>
+    <button class="d-block btn btn-primary w-100" (click)="navigateToResult()">
+      Ver detalhes
+    </button>
   </div>
 </div>

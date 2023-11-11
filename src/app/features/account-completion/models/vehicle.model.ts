@@ -3,5 +3,5 @@ export interface Vehicle {
   professional_id?: string;
   vehicleType: string;
   vehicleName: string;
-  vehicleImage: File;
+  vehicleImage: string;
 }

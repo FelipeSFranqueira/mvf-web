@@ -1,5 +1,5 @@
 export interface FoundProfessional {
-  id?: number;
+  id?: string;
   created_at?: Date;
   preferredName?: string;
   supportedState?: string;
@@ -8,6 +8,7 @@ export interface FoundProfessional {
   baseValue?: number;
   valuePerKm?: number;
   totalValue?: number;
+  phoneNumber?: string;
 }
 
 export type FoundProfessionalsResponse = {
