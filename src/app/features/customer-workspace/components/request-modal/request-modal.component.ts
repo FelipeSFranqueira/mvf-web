@@ -3,6 +3,7 @@ import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { RequestModalData } from '../../models/request-modal-data.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { ActivatedRoute } from '@angular/router';
 
 interface RequestForm {
   date: FormControl<Date>;
@@ -36,7 +37,8 @@ export class RequestModalComponent implements OnInit {
 
   constructor(
     @Inject(DIALOG_DATA) public data: RequestModalData,
-    private localeService: BsLocaleService
+    private localeService: BsLocaleService,
+    private route: ActivatedRoute
   ) {
     localeService.use('pt-br');
   }
@@ -57,20 +59,20 @@ export class RequestModalComponent implements OnInit {
         nonNullable: true,
       }),
     });
-    this.requestForm.valueChanges.subscribe((value) => console.log(value));
   }
 
   requestService(): void {
-    const date = this.requestForm.controls['date'].value;
+    const date =
+      this.requestForm.controls['date'].value.toLocaleDateString('pt-BR');
     const time = this.requestForm.controls['time'].value;
 
-    const newDate = new Date();
-    newDate.setDate(date.getDate());
-    newDate.setHours(time.getHours());
-    newDate.setMinutes(time.getMinutes());
-    newDate.setSeconds(0);
-    newDate.setMilliseconds(0);
+    const message = `Nova solicitação de Me Vê um Frete%0AOrigem: ${
+      this.data.origin
+    }%0ADestino: ${this.data.origin}%0APreço estimado: ${
+      this.data.value
+    }%0AData: ${date}%0AHora: ${time.getHours()}:${time.getMinutes()}%0A%0APoderia confirmar a disponibilidade?`;
 
-    this.requestClicked.emit(newDate.getTime());
+    const url = `https://api.whatsapp.com/send?phone=${this.data.phoneNumber}&text=${message}`;
+    window.open(url, '_blank');
   }
 }

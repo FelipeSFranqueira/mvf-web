@@ -12,31 +12,42 @@
 
       <div class="container mt-3">
         <div class="row gap-md-5 gap-3">
-          <div class="col-lg-8" style="height: 400px">
-            <div class="w-100 h-100 bg-secondary"></div>
-          </div>
+          <img
+            class="col-lg-8"
+            src="https://www.dourados.ms.gov.br/wp-content/uploads/2020/05/caminhao-agricultura-familiar_-11.jpg"
+            alt="Imagem do veículo"
+          />
 
           <div class="col">
-            <div class="w-100 h-100 p-3 bg-white shadow-sm rounded">
-              <div class="container">
-                <div
-                  class="row bg-primary text-white text-center rounded-1 shadow-sm p-2"
-                >
-                  <h4>{{ result.totalValue | currency : 'BRL' }}</h4>
+            <div
+              class="w-100 h-100 p-3 bg-white shadow-sm rounded d-flex flex-column justify-content-between"
+            >
+              <div>
+                <div class="container">
+                  <div
+                    class="row bg-primary text-white text-center rounded-1 shadow-sm p-2"
+                  >
+                    <h4>{{ result.totalValue | currency : 'BRL' }}</h4>
+                  </div>
                 </div>
-              </div>
 
-              <div class="container mt-3">
-                <!-- <div class="row">Registrado há X tempo</div> -->
-                <div class="row">
-                  Total de viagens: {{ result.totalServices }}
+                <div class="container mt-3">
+                  <!-- <div class="row bg-info mb-1 rounded p-3">
+                    Total de viagens: {{ result.totalServices }}
+                  </div> -->
+                  <div class="row bg-success text-white mb-1 rounded p-3">
+                    Valor base: {{ result.baseValue | currency : 'BRL' }}
+                  </div>
+                  <div class="row bg-success text-white mb-1 rounded p-3">
+                    Valor por Km: {{ result.valuePerKm | currency : 'BRL' }}
+                  </div>
                 </div>
               </div>
 
               <div class="container">
                 <div class="row">
                   <button
-                    class="btn btn-primary shadow-sm"
+                    class="btn btn-primary btn-lg shadow-sm"
                     (click)="openRequestDialog()"
                   >
                     Solicitar serviço
@@ -50,8 +61,8 @@
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="hasSearchFailed$ | async"
-    ><h1>Sem resultados para a busca.</h1>
-    <a href="/find-professionals">Retornar à busca</a></ng-container
-  >
+  <ng-container *ngIf="hasSearchFailed$ | async">
+    <h1>Sem resultados para a busca.</h1>
+    <a href="/find-professionals">Retornar à busca</a>
+  </ng-container>
 </div>

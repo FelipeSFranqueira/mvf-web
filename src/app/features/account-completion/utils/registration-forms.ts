@@ -16,14 +16,6 @@ export const professionalRegistrationFormGroup =
       validators: [Validators.required],
       nonNullable: true,
     }),
-    cnhImage: new FormControl(null, {
-      validators: [Validators.required],
-      nonNullable: true,
-    }),
-    userHoldingCnhImage: new FormControl(null, {
-      validators: [Validators.required],
-      nonNullable: true,
-    }),
     cnhNumber: new FormControl('', {
       validators: [Validators.required],
       nonNullable: true,
@@ -53,10 +45,6 @@ export const professionalRegistrationFormGroup =
       nonNullable: true,
     }),
     vehicleName: new FormControl('', {
-      validators: [Validators.required],
-      nonNullable: true,
-    }),
-    vehicleImage: new FormControl(null, {
       validators: [Validators.required],
       nonNullable: true,
     }),

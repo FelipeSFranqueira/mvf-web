@@ -12,6 +12,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Request } from '../../models/request.model';
 import { UserState } from '../../../../shared/state/user.state';
 import { User } from '../../../../shared/models/user.model';
+import { RequestModalData } from '../../models/request-modal-data.model';
 
 /**
  * Componente de container dos detalhes de cada prestador de serviço.
@@ -35,6 +36,8 @@ export class ProfessionalDetailsComponent implements OnInit {
   private professionalIdFromPath!: string;
   private currentUser: User | undefined;
   private currentPrice!: number;
+
+  private modalData: RequestModalData;
 
   constructor(
     private dialog: Dialog,
@@ -61,6 +64,21 @@ export class ProfessionalDetailsComponent implements OnInit {
     this.route.url.subscribe((url) => {
       this.professionalIdFromPath = url[1].path;
       this.professionalFacade.findProfessional(this.professionalIdFromPath);
+    });
+
+    this.searchResult$.subscribe((professional) => {
+      const phoneSanitized = professional?.phoneNumber.replace(/\D/g, '');
+      this.route.queryParams.subscribe(
+        (params: { origin: string; destination: string }) => {
+          this.modalData = {
+            isRequestLoading: this.isRequestLoading$,
+            origin: params.origin,
+            destination: params.destination,
+            phoneNumber: phoneSanitized,
+            value: professional?.totalValue,
+          };
+        }
+      );
     });
 
     this.searchResult$.subscribe(
@@ -97,9 +115,7 @@ export class ProfessionalDetailsComponent implements OnInit {
    */
   openRequestDialog(): void {
     const dialogRef = this.dialog.open(RequestModalComponent, {
-      data: {
-        isRequestLoading: this.isRequestLoading$,
-      },
+      data: this.modalData,
     });
     dialogRef.componentInstance?.requestClicked.subscribe((time) => {
       this.requestService(time);
