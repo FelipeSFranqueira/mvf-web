@@ -3,6 +3,11 @@ import { authenticationGuard } from './shared/guards/authentication.guard';
 
 export const appRoutes: Route[] = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth/login',
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./features/authentication/authentication.module').then(
