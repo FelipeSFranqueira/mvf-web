@@ -47,11 +47,13 @@
 
                 <button
                   class="btn btn-primary btn-lg w-100 mt-2"
-                  (click)="login()"
+                  *ngIf="(loginLoading$ | async) === false"
                   [disabled]="loginForm.invalid"
+                  (click)="login()"
                 >
                   Entrar
                 </button>
+                <lib-mvf-loader *ngIf="loginLoading$ | async" />
               </form>
 
               <div class="row text-center g-0 w-100">
