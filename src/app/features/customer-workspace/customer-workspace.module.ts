@@ -18,7 +18,7 @@ import { FindProfessionalsState } from './state/find-professionals.state';
 import { FindProfessionalsFacade } from './facade/find-professionals.facade';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MvfLoaderComponent } from 'modules/shared/mvf-ui';
+import { MvfHeaderComponent, MvfLoaderComponent } from 'modules/shared/mvf-ui';
 import { FindSpecificProfessionalService } from './api/find-specific-professional.service';
 import { FindSpecificProfessionalState } from './state/find-specific-professional.state';
 import { FindSpecificProfessionalFacade } from './facade/find-specific-professional.facade';
@@ -40,6 +40,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     ReactiveFormsModule,
     MvfLoaderComponent,
     TimepickerModule.forRoot(),
+    MvfHeaderComponent,
   ],
   declarations: [
     CustomerWorkspaceRootComponent,
