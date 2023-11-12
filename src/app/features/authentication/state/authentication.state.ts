@@ -9,7 +9,7 @@ export class AuthenticationState {
   private _isRegistering$ = new BehaviorSubject<boolean>(false);
   private _isRegistered$ = new BehaviorSubject<boolean>(false);
   private _error$ = new BehaviorSubject<boolean>(false);
-  private _loginLoading$ = new Subject<boolean>();
+  private _loginLoading$ = new BehaviorSubject<boolean>(false);
   private _loginSuccess$ = new Subject<boolean>();
   private _loginError$ = new Subject<boolean>();
 
