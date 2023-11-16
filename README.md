@@ -1,6 +1,6 @@
 # Me Vê um Frete <br> <img width= "187" src="docs/assets/Logo.png"/>
 
-## Versão: 0.8.1-alpha.1
+## Versão: 0.9.2-alpha.1
 
 ## Status do Projeto: ⚠️ Espera
 
